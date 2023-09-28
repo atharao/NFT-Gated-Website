@@ -1,0 +1,28 @@
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Create three columns */
+    gap: 56px;
+    justify-items: center; /* Center the content horizontally within each grid item */
+    align-items: center; /* Center the content vertically within each grid item */
+    text-align: center; /* Center the text within each grid item */
+  }
+  
+  .photo {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Set a maximum height for the images to make them square */
+    object-fit: cover; /* Maintain the aspect ratio and cover the entire container */
+    margin-top: 5%; /* Add margin to move images slightly lower */
+    transition: transform 0.3s ease; /* Add a smooth transition for the hover effect */
+
+
+  }
+
+  .gallerySpacing {
+    margin-top: 90px; /* Adjust the margin-top value to control the spacing */
+  }
+
+  .photo:hover {
+    transform: scale(0.9); /* Scale up the image by 10% when hovered */
+    opacity: 0.7; /* Adjust the opacity value as desired */
+  }
