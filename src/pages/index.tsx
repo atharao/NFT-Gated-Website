@@ -1,6 +1,5 @@
 import {
   ConnectWallet,
-  MediaRenderer,
   useContract,
   useContractMetadata,
   useUser,
@@ -15,7 +14,40 @@ import styles from "../styles/Home.module.css";
 import checkBalance from "../util/checkBalance";
 import Head from "next/head";
 import PhotoGallery from "../components/PhotoGallery";
-const photos = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg" ,"7.jpg", "8.jpg", "9.jpg", "10.jpg","11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg" ,"17.jpg", "18.jpg"]; // List of photo filenames
+
+// Updated list with DSA course images and YouTube links
+const dsaCourses = [
+  { img: "1.png", link: "https://www.youtube.com/watch?v=yRpLlJmRo2w&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=LusTv0RlnSU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=2" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=I5srDu75h_M&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=3" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=4" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=5" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=6" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=7" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=8" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=9" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=10" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=11" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=12" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=13" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=14" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=15" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=16" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=17" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=18" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=19" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=20" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=21" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=22" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=23" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=24" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=25" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=26" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=27" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=28" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=29" },
+  { img: "1.png", link: "https://www.youtube.com/watch?v=0r1SfRoLuzU&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop&index=30" },
+];
 
 export default function Home() {
   const { isLoggedIn, isLoading } = useUser();
@@ -33,18 +65,17 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>New Jordan Shoes NFTs</title>
+        <title>DSA Courses - E-Learners Platform</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {/* <h3 className={styles.heading}>Congratulations</h3> */}
-      <h1 className={styles.h1}>Premium Content Unlocked</h1>
+      <h1 className={styles.h1}>Premium DSA Content Unlocked</h1>
       
       <div className={styles.gallerySpacing}>
-      <PhotoGallery photos={photos} /> {/* Add your PhotoGallery component */}
+        <PhotoGallery courses={dsaCourses} /> {/* Pass courses as props */}
       </div>    
     </div>
   );
-  
 }
 
 // This gets called on every request
@@ -61,29 +92,19 @@ export async function getServerSideProps(context) {
   }
 
   const secretKey = process.env.TW_SECRET_KEY;
-
   if (!secretKey) {
-    console.log("Missing env var: TW_SECRET_KEY");
+    console.error("Missing env var: TW_SECRET_KEY");
     throw new Error("Missing env var: TW_SECRET_KEY");
   }
 
-  // Ensure we are able to generate an auth token using our private key instantiated SDK
   const PRIVATE_KEY = process.env.THIRDWEB_AUTH_PRIVATE_KEY;
   if (!PRIVATE_KEY) {
     throw new Error("You need to add an PRIVATE_KEY environment variable.");
   }
 
-  // Instantiate our SDK
-  const sdk = ThirdwebSDK.fromPrivateKey(
-    process.env.THIRDWEB_AUTH_PRIVATE_KEY,
-    "mumbai",
-    { secretKey }
-  );
+  const sdk = ThirdwebSDK.fromPrivateKey(PRIVATE_KEY, "mumbai", { secretKey });
 
-  // Check to see if the user has an NFT
   const hasNft = await checkBalance(sdk, user.address);
-
-  // If they don't have an NFT, redirect them to the login page
   if (!hasNft) {
     return {
       redirect: {
@@ -93,8 +114,5 @@ export async function getServerSideProps(context) {
     };
   }
 
-  // Finally, return the props
-  return {
-    props: {},
-  };
+  return { props: {} };
 }

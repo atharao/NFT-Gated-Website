@@ -1,5 +1,5 @@
 // Replace this with your contract address
-export const contractAddress = "0xfe47fb0369716e77ED5AC735346a4B48E1436721";
+export const contractAddress = "0x65ED5933E36D4E64711258f7965432857a2b91E4";
 
 // Replace this with your domain name.
 export const domainName = "http://localhost:3000/";

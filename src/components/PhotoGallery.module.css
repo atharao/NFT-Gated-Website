@@ -1,28 +1,39 @@
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Create three columns */
-    gap: 56px;
-    justify-items: center; /* Center the content horizontally within each grid item */
-    align-items: center; /* Center the content vertically within each grid item */
-    text-align: center; /* Center the text within each grid item */
-  }
-  
-  .photo {
-    max-width: 100%;
-    height: auto;
-    max-height: 300px; /* Set a maximum height for the images to make them square */
-    object-fit: cover; /* Maintain the aspect ratio and cover the entire container */
-    margin-top: 5%; /* Add margin to move images slightly lower */
-    transition: transform 0.3s ease; /* Add a smooth transition for the hover effect */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Maintain three columns */
+  gap: 56px;
+  justify-items: center; /* Center items horizontally */
+  align-items: start; /* Align items to start vertically */
+  text-align: center; /* Center text within each grid item */
+  padding: 20px; /* Add padding around the grid for better spacing */
+}
 
+.photo {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* Keep images square and uniform */
+  object-fit: cover; /* Cover the frame fully, cropping as necessary */
+  transition: transform 0.3s ease; /* Smooth transformation on hover */
+}
 
-  }
+.courseItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content vertically in the grid cell */
+}
 
-  .gallerySpacing {
-    margin-top: 90px; /* Adjust the margin-top value to control the spacing */
-  }
+.lectureTitle {
+  margin-top: 10px; /* Space between image and title */
+  font-size: 18px; /* Appropriately sized font for titles */
+  color:white; /* Dark color for readability */
+  font-weight: bold; /* Make text bold to stand out */
+}
 
-  .photo:hover {
-    transform: scale(0.9); /* Scale up the image by 10% when hovered */
-    opacity: 0.7; /* Adjust the opacity value as desired */
-  }
+.photo:hover {
+  transform: scale(1.05); /* Subtle scale-up effect on hover */
+  opacity: 0.8; /* Slightly reduce opacity on hover */
+}
+
+.gallerySpacing {
+  margin-top: 90px; /* Adequate top margin for overall spacing */
+}
