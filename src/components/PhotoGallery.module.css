@@ -1,39 +1,45 @@
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Maintain three columns */
+  grid-template-columns: repeat(3, 1fr);
   gap: 56px;
-  justify-items: center; /* Center items horizontally */
-  align-items: start; /* Align items to start vertically */
-  text-align: center; /* Center text within each grid item */
-  padding: 20px; /* Add padding around the grid for better spacing */
-}
-
-.photo {
-  max-width: 100%;
-  height: auto;
-  max-height: 300px; /* Keep images square and uniform */
-  object-fit: cover; /* Cover the frame fully, cropping as necessary */
-  transition: transform 0.3s ease; /* Smooth transformation on hover */
+  justify-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .courseItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center content vertically in the grid cell */
+  position: relative; /* This allows absolute positioning within each item */
+}
+
+.imageLink {
+  display: block;
+  position: relative;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.playIcon {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Align center of the icon with the center of the image */
+  width: 150px; /* Adjust size accordingly */
+  height: auto;
+  opacity: 0.8; /* Optional: Adjust for better visibility */
+  transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.playIcon:hover {
+  opacity: 1; /* Full opacity on hover */
 }
 
 .lectureTitle {
-  margin-top: 10px; /* Space between image and title */
-  font-size: 18px; /* Appropriately sized font for titles */
-  color:white; /* Dark color for readability */
-  font-weight: bold; /* Make text bold to stand out */
-}
-
-.photo:hover {
-  transform: scale(1.05); /* Subtle scale-up effect on hover */
-  opacity: 0.8; /* Slightly reduce opacity on hover */
-}
-
-.gallerySpacing {
-  margin-top: 90px; /* Adequate top margin for overall spacing */
+  margin-top: 10px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
 }
